@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Dates } from "./pages/dates";
 import { Dashboard } from "./pages/dashboard";
 import { Add } from "./pages/add";
+import { Gift } from "./pages/giftcard";
 import { Register } from "./pages/register";
 import { Login } from "./pages/login";
 import injectContext from "./store/appContext";
@@ -34,6 +35,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/dates">
               <Dates />
+            </Route>
+            <Route exact path="/giftacard">
+              <Gift />
             </Route>
             <Route>
               <h1>Not found!</h1>

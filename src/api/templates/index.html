@@ -1,0 +1,17 @@
+<table style="margin-left: 20px">
+  <!-- Table headers -->
+  <th>
+    <tr style="color: black">
+      <th>First Name</th>
+      <th>Date</th>
+    </tr>
+  </th>
+
+  <tr>
+    {%for date_id in query%}
+
+    <td>{{date_id.name}}</td>
+    <td>{{date_id.date}}</td>
+    {%endfor%}
+  </tr>
+</table>

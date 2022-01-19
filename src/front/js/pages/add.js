@@ -29,9 +29,9 @@ export const Add = () => {
             </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="/giftacard">
               <i className="fa fa-gift" aria-hidden="true"></i> Send A Card
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -2,12 +2,17 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, render_template
+from dotenv import load_dotenv
+load_dotenv()
+import os
 from datetime import datetime
 from api.models import db, User, Dates
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from argon2 import PasswordHasher
 from sqlalchemy import table
+import smtplib
+from email.message import EmailMessage
 
 ph = PasswordHasher()
 
@@ -26,6 +31,29 @@ def handle_hello():
     }
     return jsonify(response_body), 200
 
+@api.route("/dates", methods=["GET", "POST"])
+def more_dates():
+    if request.method == "GET":
+        return render_template("index.html", query=Dates.query.all())
+
+
+@api.route("/send", methods=["POST"])
+def send_gift():
+    msg = EmailMessage()
+    msg['Subject'] = 'Happy Birthday!'
+    msg['From'] = "bookreaderfajr@gmail.com"
+    payload = request.get_json()
+    msg['To'] = payload['email']
+    radio = payload['radio']
+    msg.set_content(radio, subtype='html')
+
+    
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        smtp.login(os.getenv("EMAIL_USERNAME"), os.getenv("EMAIL_PASSWORD")) 
+        smtp.send_message(msg)
+    return ("successfully sent!")
+ 
+  
 @api.route('/register', methods=["POST"])
 def register_user():
     data = request.get_json()
