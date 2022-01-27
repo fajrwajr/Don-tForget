@@ -19,10 +19,10 @@ Content-Type: application/json
 POST https://3001-salmon-fox-790b6k1m.ws-us27.gitpod.io/api/dash
 Content-Type: application/json
 
-{
-    "name": "Redf",
-    "date": "04/06/2004"
-}
+###
+
+POST https://3001-salmon-fox-790b6k1m.ws-us27.gitpod.io/api/alert
+
 
 ### Protected Request
 GET https://3001-salmon-fox-790b6k1m.ws-us25.gitpod.io/api/hello

@@ -1,18 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
+import { Link, useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Dashboard = () => {
-  // const auth = useAuth();
-  // const history = useHistory();
+  const { store, actions } = useContext(Context);
+  const category = useParams().name;
 
-  // React.useEffect(() => {
-  //   if (!auth.token) {
-  //     history.push("/login");
-  //   }
-  // }, [auth.token]);
-
+  actions.getDateData();
   return (
     <>
       <div className="sidebar-container">
@@ -20,7 +16,7 @@ export const Dashboard = () => {
         <ul className="sidebar-navigation">
           <li className="header">Navigation</li>
           <li>
-            <Link to="/">
+            <Link to="/dashboard">
               <i class="fa fa-circle" aria-hidden="true"></i> Dashboard
             </Link>
           </li>
@@ -40,33 +36,18 @@ export const Dashboard = () => {
               <i className="fa fa-gift" aria-hidden="true"></i> Send A Card
             </Link>
           </li>
+          <li>
+            <Link to="/sendapayment">
+              <i className="fa fa-gift" aria-hidden="true"></i> Send A Payment
+            </Link>
+          </li>
         </ul>
       </div>
       <div className="center">
         <h1>Dashboard</h1>
         <br></br>
         <h4>You've Haven't Added Any People</h4>
-        {/* <button onClick={() => auth.logout()}>Logout</button> */}
       </div>
     </>
   );
 };
-
-// export function Dashboard() {
-//   const auth = useAuth();
-//   const history = useHistory();
-
-//   React.useEffect(() => {
-//     if (!auth.token) {
-//       history.push("/login");
-//     }
-//   }, [auth.token]);
-
-//   return (
-//     <div>
-//       <h1>Dashboard Page</h1>
-
-//       <button onClick={() => auth.logout()}>Logout</button>
-//     </div>
-//   );
-// }

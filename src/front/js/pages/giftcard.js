@@ -16,7 +16,7 @@ export const Gift = () => {
         <ul className="sidebar-navigation">
           <li className="header">Navigation</li>
           <li>
-            <Link to="/">
+            <Link to="/dashboard">
               <i class="fa fa-circle" aria-hidden="true"></i> Dashboard
             </Link>
           </li>
@@ -34,6 +34,11 @@ export const Gift = () => {
           <li>
             <Link to="/giftacard">
               <i className="fa fa-gift" aria-hidden="true"></i> Send A Card
+            </Link>
+          </li>
+          <li>
+            <Link to="/sendapayment">
+              <i className="fa fa-gift" aria-hidden="true"></i> Send A Payment
             </Link>
           </li>
         </ul>

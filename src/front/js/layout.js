@@ -6,6 +6,7 @@ import { Dashboard } from "./pages/dashboard";
 import { Add } from "./pages/add";
 import { Gift } from "./pages/giftcard";
 import { Register } from "./pages/register";
+import { Payment } from "./pages/payment";
 import { Login } from "./pages/login";
 import injectContext from "./store/appContext";
 import { Footer } from "./component/footer";
@@ -38,6 +39,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/giftacard">
               <Gift />
+            </Route>
+            <Route exact path="/sendapayment">
+              <Payment />
             </Route>
             <Route>
               <h1>Not found!</h1>

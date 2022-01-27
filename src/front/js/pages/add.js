@@ -33,6 +33,11 @@ export const Add = () => {
               <i className="fa fa-gift" aria-hidden="true"></i> Send A Card
             </Link>
           </li>
+          <li>
+            <Link to="/sendapayment">
+              <i className="fa fa-gift" aria-hidden="true"></i> Send A Payment
+            </Link>
+          </li>
         </ul>
       </div>
       <div className="center">
@@ -43,8 +48,9 @@ export const Add = () => {
       <div className="container">
         <form role="form">
           <div className="row">
-            <div className="form-group col-lg-3">
+            <div className="form-group">
               <input
+                style={{ marginLeft: "-20rem" }}
                 type="text"
                 name="name"
                 value={name}
@@ -56,8 +62,9 @@ export const Add = () => {
           </div>
           <br></br>
           <div className="row">
-            <div className="form-group col-lg-3">
+            <div className="form-group">
               <input
+                style={{ marginLeft: "-20rem" }}
                 type="text"
                 name="date"
                 value={date}
@@ -66,24 +73,28 @@ export const Add = () => {
                 placeholder="BirthDate"
               />
             </div>
+            <button
+              style={{
+                marginLeft: "-32rem",
+                marginTop: "4rem",
+                height: "2rem",
+                width: "6rem",
+              }}
+              type="submit"
+              onClick={() => {
+                fetch(process.env.BACKEND_URL + "/api/dash", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ name, date }),
+                });
+                className = "btn btn-primary";
+              }}
+            >
+              Add
+            </button>
           </div>
-          <br></br>
-          <button
-            style={{ width: "5rem", marginLeft: "14rem" }}
-            type="submit"
-            onClick={() => {
-              fetch(process.env.BACKEND_URL + "/api/dash", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ name, date }),
-              });
-              className = "btn btn-primary";
-            }}
-          >
-            Add
-          </button>
         </form>
       </div>
     </>

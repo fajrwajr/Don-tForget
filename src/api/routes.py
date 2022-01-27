@@ -5,7 +5,8 @@ from flask import Flask, request, jsonify, url_for, Blueprint, render_template
 from dotenv import load_dotenv
 load_dotenv()
 import os
-from datetime import datetime
+import datetime as dt
+import time
 from api.models import db, User, Dates
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
@@ -18,7 +19,25 @@ ph = PasswordHasher()
 
 api = Blueprint('api', __name__, template_folder='templates')
 
+@api.route('/alert', methods=['GET', 'POST'])
+def send_email():
+    now = dt.datetime.now()
+    month = now.strftime("%m")
+    #day = int(now.strftime("%d"))
 
+    if month == 1:
+        my_email = "bookreaderfajr@gmail.com"
+        my_password = "Frtysk489"
+
+        with smtplib.SMTP("smtp.gmail.com") as connection:
+            connection.starttls()
+            connection.login(user=my_email, password=my_password)
+            connection.sendmail(
+                from_addr=my_email,
+                to_addrs=my_email,
+                msg="Subject: send"
+            )
+    return("success")
 @api.route('/hello', methods=['POST', 'GET'])
 @jwt_required()
 def handle_hello():
@@ -33,9 +52,10 @@ def handle_hello():
 
 @api.route("/dates", methods=["GET", "POST"])
 def more_dates():
-    if request.method == "GET":
-        return render_template("index.html", query=Dates.query.all())
-
+    data = Dates.query.all()
+    
+    serialized_data = [item.serialize() for item in data]
+    return jsonify(serialized_data), 200
 
 @api.route("/send", methods=["POST"])
 def send_gift():
@@ -48,7 +68,7 @@ def send_gift():
     msg.set_content(radio, subtype='html')
 
     
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+    with smtplib.SMTP_SSL('smtp.gmail.com', 587) as smtp:
         smtp.login(os.getenv("EMAIL_USERNAME"), os.getenv("EMAIL_PASSWORD")) 
         smtp.send_message(msg)
     return ("successfully sent!")
