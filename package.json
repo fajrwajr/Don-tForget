@@ -74,6 +74,7 @@
 	},
 	"dependencies": {
 		"ethers": "^5.5.3",
+		"flask": "^0.2.10",
 		"heroku": "^7.59.2",
 		"jsonwebtoken": "^8.5.1",
 		"prop-types": "^15.6.1",
