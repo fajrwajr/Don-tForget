@@ -38,17 +38,17 @@ def send_email():
                 msg="Subject: send"
             )
     return("success")
-@api.route('/hello', methods=['POST', 'GET'])
-@jwt_required()
-def handle_hello():
-    current_user_id = get_jwt_identity()
+# @api.route('/hello', methods=['POST', 'GET'])
+# @jwt_required()
+# def handle_hello():
+#     current_user_id = get_jwt_identity()
 
-    user = User.query.filter(User.id == current_user_id).first()
+#     user = User.query.filter(User.id == current_user_id).first()
 
-    response_body = {
-        "message": f"Hello I Am {user.email}"        
-    }
-    return jsonify(response_body), 200
+#     response_body = {
+#         "message": f"Hello I Am {user.email}"        
+#     }
+#     return jsonify(response_body), 200
 
 @api.route("/dates", methods=["GET", "POST"])
 def more_dates():
