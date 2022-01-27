@@ -76,11 +76,13 @@
 		"ethers": "^5.5.3",
 		"heroku": "^7.59.2",
 		"jsonwebtoken": "^8.5.1",
+		"nc": "^1.0.3",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-dom": "^16.8.4",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^5.2.0",
+		"telnet": "^0.0.1",
 		"zustand": "^3.6.9"
 	}
 }

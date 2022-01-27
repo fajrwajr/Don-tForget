@@ -1,2 +1,2 @@
 release: pipenv run upgrade
-web: gunicorn app:routes
+web: gunicorn app:app
