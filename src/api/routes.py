@@ -9,6 +9,7 @@ from sendgrid.helpers.mail import *
 import os
 import datetime as dt
 import time
+from app import app
 from api.models import db, User, Dates
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
