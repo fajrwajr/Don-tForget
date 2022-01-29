@@ -9,7 +9,6 @@ from sendgrid.helpers.mail import *
 import os
 import datetime as dt
 import time
-from app import app
 from api.models import db, User, Dates
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
@@ -25,22 +24,20 @@ api = Blueprint('api', __name__, template_folder='templates')
 @api.route('/alert', methods=['GET', 'POST'])
 def send_email():
     now = dt.datetime.now()
-    month = now.strftime("%m")
-    #day = int(now.strftime("%d"))
-
-    if month == 1:
-        my_email = "bookreaderfajr@gmail.com"
-        my_password = "Frtysk489"
-
-        with smtplib.SMTP("smtp.gmail.com") as connection:
-            connection.starttls()
-            connection.login(user=my_email, password=my_password)
-            connection.sendmail(
-                from_addr=my_email,
-                to_addrs=my_email,
-                msg="Subject: send"
-            )
-    return("success")
+    month = int(now.strftime("%m"))
+    day = int(now.strftime("%d"))
+    if month == 1 and day == 28: 
+        sg = sendgrid.SendGridAPIClient(api_key=os.getenv('SENDGRID_API_KEY'))
+        from_email = Email("bookreaderfajr@gmail.com")
+        to_email = To("bookreaderfajr@gmail.com")
+        subject = "Happy Birthday!"
+        content = Content("text/plain", "and easy to do anywhere, even with Python")
+        mail = Mail(from_email, to_email, subject, content)
+        response = sg.client.mail.send.post(request_body=mail.get())
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+    return ('success')
 # @api.route('/hello', methods=['POST', 'GET'])
 # @jwt_required()
 # def handle_hello():
@@ -60,14 +57,14 @@ def more_dates():
     serialized_data = [item.serialize() for item in data]
     return jsonify(serialized_data), 200
 
-@api.route("/send", methods=["GET","POST"])
+@api.route("/send", methods=["POST"])
 def send_gift():
     sg = sendgrid.SendGridAPIClient(api_key=os.getenv('SENDGRID_API_KEY'))
     from_email = Email("bookreaderfajr@gmail.com")
     to_email = To("bookreaderfajr@gmail.com")
     payload = request.get_json()
     radio = payload['radio']
-    subject = "Sending with SendGrid is Fun"
+    subject = "Happy Birthday!"
     content = Content("text/plain", "and easy to do anywhere, even with Python")
     mail = Mail(from_email, to_email, subject, content, radio)
     response = sg.client.mail.send.post(request_body=mail.get())
