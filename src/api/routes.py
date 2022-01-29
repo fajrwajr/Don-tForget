@@ -4,6 +4,8 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint, render_template
 from dotenv import load_dotenv
 load_dotenv()
+import sendgrid
+from sendgrid.helpers.mail import *
 import os
 import datetime as dt
 import time
@@ -57,22 +59,21 @@ def more_dates():
     serialized_data = [item.serialize() for item in data]
     return jsonify(serialized_data), 200
 
-@api.route("/send", methods=["POST"])
+@api.route("/send", methods=["GET","POST"])
 def send_gift():
-    msg = EmailMessage()
-    msg['Subject'] = 'Happy Birthday!'
-    msg['From'] = "bookreaderfajr@gmail.com"
+    sg = sendgrid.SendGridAPIClient(api_key=os.getenv('SENDGRID_API_KEY'))
+    from_email = Email("bookreaderfajr@gmail.com")
+    to_email = To("bookreaderfajr@gmail.com")
     payload = request.get_json()
-    msg['To'] = payload['email']
     radio = payload['radio']
-    msg.set_content(radio, subtype='html')
-
-    
-    with smtplib.SMTP_SSL('smtp.gmail.com', 587) as smtp:
-        smtp.login(os.getenv("EMAIL_USERNAME"), os.getenv("EMAIL_PASSWORD")) 
-        smtp.send_message(msg)
-    return ("successfully sent!")
- 
+    subject = "Sending with SendGrid is Fun"
+    content = Content("text/plain", "and easy to do anywhere, even with Python")
+    mail = Mail(from_email, to_email, subject, content, radio)
+    response = sg.client.mail.send.post(request_body=mail.get())
+    print(response.status_code)
+    print(response.body)
+    print(response.headers)
+    return ('success')
   
 @api.route('/register', methods=["POST"])
 def register_user():

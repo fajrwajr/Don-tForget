@@ -126,7 +126,6 @@ export const Gift = () => {
             </div>
             <button
               style={{ width: "5rem", marginLeft: "-12rem" }}
-              type="submit"
               onClick={() => {
                 fetch(process.env.BACKEND_URL + "/api/send", {
                   method: "POST",
