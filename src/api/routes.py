@@ -22,21 +22,23 @@ ph = PasswordHasher()
 api = Blueprint('api', __name__, template_folder='templates')
 
 @api.route('/alert', methods=['GET', 'POST'])
-def send_email():
-    now = dt.datetime.now()
-    month = int(now.strftime("%m"))
-    day = int(now.strftime("%d"))
-    if month == 1 and day == 28: 
-        sg = sendgrid.SendGridAPIClient(api_key=os.getenv('SENDGRID_API_KEY'))
-        from_email = Email("bookreaderfajr@gmail.com")
-        to_email = To("bookreaderfajr@gmail.com")
-        subject = "Happy Birthday!"
-        content = Content("text/plain", "and easy to do anywhere, even with Python")
-        mail = Mail(from_email, to_email, subject, content)
-        response = sg.client.mail.send.post(request_body=mail.get())
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
+def birthday_alert():
+    for date in Dates.query.all():
+        now = dt.datetime.now()
+        month = int(now.strftime("%m"))
+        day = int(now.strftime("%d"))
+        print(int(date.date.strftime("%d")))
+        if month == int(date.date.strftime("%m")) and day == int(date.date.strftime("%d"): 
+            sg = sendgrid.SendGridAPIClient(api_key=os.getenv('SENDGRID_API_KEY'))
+            from_email = Email("bookreaderfajr@gmail.com")
+            to_email = To("bookreaderfajr@gmail.com")
+            subject = "Birthday Alert!"
+            content = Content("text/plain", "and easy to do anywhere, even with Python")
+            mail = Mail(from_email, to_email, subject, content)
+            response = sg.client.mail.send.post(request_body=mail.get())
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
     return ('success')
 # @api.route('/hello', methods=['POST', 'GET'])
 # @jwt_required()
