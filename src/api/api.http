@@ -21,8 +21,12 @@ Content-Type: application/json
 
 ###
 
-POST https://3001-salmon-fox-790b6k1m.ws-us27.gitpod.io/api/alert
-
+POST https://3001-salmon-fox-790b6k1m.ws-us29.gitpod.io/api/alert
+Content-Type: application/json
+{
+    "name": "Issa",
+    "date": "04/06/2004"
+}
 
 ### Protected Request
 GET https://3001-salmon-fox-790b6k1m.ws-us25.gitpod.io/api/hello

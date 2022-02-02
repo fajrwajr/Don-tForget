@@ -27,9 +27,6 @@ class Dates(db.Model):
     name = db.Column(db.String(120), unique=True, nullable=False)
     date = db.Column(db.DateTime, unique=False, nullable=False)    
 
-    def __repr__(self):
-        return '<User %r>' % self.username
-
     def serialize(self):
         return {
             "id": self.id,

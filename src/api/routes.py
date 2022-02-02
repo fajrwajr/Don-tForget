@@ -7,48 +7,65 @@ load_dotenv()
 import sendgrid
 from sendgrid.helpers.mail import *
 import os
-import datetime as dt
+import schedule
+import datetime 
 import time
 from api.models import db, User, Dates
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from argon2 import PasswordHasher
 from sqlalchemy import table
-import smtplib
-from email.message import EmailMessage
+
 
 ph = PasswordHasher()
 
 api = Blueprint('api', __name__, template_folder='templates')
 
-@api.route('/alert', methods=['GET', 'POST'])
-def send_email():
-    now = dt.datetime.now()
-    month = int(now.strftime("%m"))
-    day = int(now.strftime("%d"))
-    if month == 1 and day == 28: 
-        sg = sendgrid.SendGridAPIClient(api_key=os.getenv('SENDGRID_API_KEY'))
-        from_email = Email("bookreaderfajr@gmail.com")
-        to_email = To("bookreaderfajr@gmail.com")
-        subject = "Happy Birthday!"
-        content = Content("text/plain", "and easy to do anywhere, even with Python")
-        mail = Mail(from_email, to_email, subject, content)
-        response = sg.client.mail.send.post(request_body=mail.get())
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
-    return ('success')
-# @api.route('/hello', methods=['POST', 'GET'])
-# @jwt_required()
-# def handle_hello():
-#     current_user_id = get_jwt_identity()
+@api.route('/schedule', methods=['GET', 'POST'])
+def birthday_alert():
+    def MINUTE():
+        for date in Dates.query.all():
+            TNOW = datetime.datetime.now().replace(microsecond=0)
+            month = int(TNOW.strftime("%m"))
+            day = int(TNOW.strftime("%d"))
+        if month == int(date.date.strftime("%m")) and day == int(date.date.strftime("%d")): 
+            sg = sendgrid.SendGridAPIClient(api_key=os.getenv('SENDGRID_API_KEY'))
+            from_email = Email("bookreaderfajr@gmail.com")
+            to_email = To("bookreaderfajr@gmail.com")
+            subject = "Birthday Alert!"
+            content = Content("text/plain", "It's someone's birthday! Log on to send a card")
+            mail = Mail(from_email, to_email, subject, content)
+            response = sg.client.mail.send.post(request_body=mail.get())
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
+        return ('success')
+        print(str(TNOW) +" Print 5 sec interval for 3 times")
 
-#     user = User.query.filter(User.id == current_user_id).first()
+    def SECONDS():
+        TNOW = datetime.datetime.now().replace(microsecond=0)
+        print(str(TNOW) +"This prints 5 sec interval for 3 times")
 
-#     response_body = {
-#         "message": f"Hello I Am {user.email}"        
-#     }
-#     return jsonify(response_body), 200
+    schedule.every(1).minutes.do(MINUTE)
+    schedule.every().minute.at(":05").do(SECONDS)
+    schedule.every().minute.at(":10").do(SECONDS)
+    schedule.every().minute.at(":15").do(SECONDS)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
+@api.route('/hello', methods=['POST', 'GET'])
+@jwt_required()
+def handle_hello():
+    current_user_id = get_jwt_identity()
+
+    user = User.query.filter(User.id == current_user_id).first()
+
+    response_body = {
+        "message": f"Hello I Am {user.email}"        
+    }
+    return jsonify(response_body), 200
 
 @api.route("/dates", methods=["GET", "POST"])
 def more_dates():

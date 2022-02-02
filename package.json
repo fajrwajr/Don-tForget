@@ -73,6 +73,7 @@
 		]
 	},
 	"dependencies": {
+		"crontab": "^1.4.2",
 		"ethers": "^5.5.3",
 		"flask": "^0.2.10",
 		"heroku": "^7.59.2",
@@ -84,6 +85,7 @@
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^5.2.0",
 		"telnet": "^0.0.1",
+		"wayscript": "^0.2.1",
 		"zustand": "^3.6.9"
 	}
 }

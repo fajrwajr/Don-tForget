@@ -20,6 +20,7 @@ flask-admin = "*"
 flask-jwt-extended = "*"
 argon2-cffi = "*"
 sendgrid = "*"
+schedule = "*"
 
 [requires]
 python_version = "3.8"
