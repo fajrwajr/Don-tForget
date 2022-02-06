@@ -2,6 +2,7 @@ import React from "react";
 import birthday from "../../img/birthday.jpg";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
+
 export const Main = () => {
   return (
     <div className="gfg">

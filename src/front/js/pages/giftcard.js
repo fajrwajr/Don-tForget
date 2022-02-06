@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/index.css";
+import ballon from "../../img/cartoon.jpg";
+import gift from "../../img/gift.jpg";
+import minion from "../../img/minion.jpg";
 
 export const Gift = () => {
   const [email, setEmail] = React.useState("");
@@ -8,7 +10,7 @@ export const Gift = () => {
   const [radioTwo, setRadioTwo] = React.useState("");
   const [radioThree, setRadioThree] = React.useState("");
   let result =
-    "<div style='width: 85vw; margin-left: 20px; margin: 0 auto;'><div style='display: flex; justify-content: space-around;'><div style='flex: 2 1 0; height: 350px; margin: 20px auto; border: 1px solid #ccc; box-sizing: border-box;'><h2>May your birthday be sprinkled with fun and laughter</h2><h1 style='text-align: center'></h1><p id='message'>Your card goes here...</p><p id='from'></p> </div></div></div>";
+    "<div style='width: 85vw; margin-left: 20px; margin: 0 auto;'><div style='display: flex; justify-content: space-around;'><div style='flex: 2 1 0; height: 350px; margin: 20px auto; border: 1px solid #ccc; box-sizing: border-box;'><h1 style='color: pink'>Happy Birthday</h1><h1 style='text-align: center'></h1><h2 id='message'>May your birthday be sprinkled with fun and laughter</h2><p id='from'><img src='cartoon.jpg'></p> </div></div></div>";
   return (
     <>
       <div className="sidebar-container">
@@ -62,7 +64,7 @@ export const Gift = () => {
                 <br></br>
                 <br></br>
                 <input
-                  style={{ marginLeft: "-23rem", marginBottom: "-84rem" }}
+                  style={{ marginLeft: "-29rem", marginBottom: "-84rem" }}
                   type="radio"
                   name="radio"
                   value={result}
@@ -70,20 +72,24 @@ export const Gift = () => {
                 />
                 <div
                   class="main"
-                  style={{ marginLeft: "-36rem", marginTop: "-3rem" }}
+                  style={{ marginLeft: "-43rem", marginTop: "-3rem" }}
                 >
                   <div class="container">
                     <div class="card">
-                      <h2>Happy Birthday</h2>
+                      <h2 style={{ color: "pink" }}>Happy Birthday</h2>
                       <h1 id="name"></h1>
-                      <p id="message">Your card goes here...</p>
-                      <p id="from"></p>
+                      <p id="message" style={{ fontSize: "22px" }}>
+                        May your birthday be sprinkled with fun and laughter
+                      </p>
+                      <p id="from">
+                        <img style={{ height: "300px" }} src={ballon}></img>
+                      </p>
                     </div>
                   </div>
                 </div>
                 <br></br>
                 <input
-                  style={{ marginLeft: "-23rem", marginBottom: "-84rem" }}
+                  style={{ marginLeft: "-29rem", marginBottom: "-84rem" }}
                   type="radio"
                   name="choice2"
                   value={radioTwo}
@@ -91,19 +97,24 @@ export const Gift = () => {
                 />
                 <div
                   class="main"
-                  style={{ marginLeft: "-36rem", marginTop: "-3rem" }}
+                  style={{ marginLeft: "-43rem", marginTop: "-3rem" }}
                 >
                   <div class="container">
                     <div class="card">
-                      <h2>Happy Birthday</h2>
+                      <h2 style={{ color: "yellow" }}>Happy Birthday</h2>
                       <h1 id="name"></h1>
-                      <p id="message">Your card goes here...</p>
-                      <p id="from"></p>
+                      <p id="message" style={{ fontSize: "22px" }}>
+                        Today is your birthday, yet I have the best gift in the
+                        world
+                      </p>
+                      <p id="from">
+                        <img style={{ height: "280px" }} src={gift}></img>
+                      </p>
                     </div>
                   </div>
                 </div>{" "}
                 <input
-                  style={{ marginLeft: "-23rem", marginBottom: "-84rem" }}
+                  style={{ marginLeft: "-29rem", marginBottom: "-84rem" }}
                   type="radio"
                   name="choice3"
                   value={radioThree}
@@ -111,14 +122,19 @@ export const Gift = () => {
                 />
                 <div
                   class="main"
-                  style={{ marginLeft: "-36rem", marginTop: "-3rem" }}
+                  style={{ marginLeft: "-43rem", marginTop: "-3rem" }}
                 >
                   <div class="container">
                     <div class="card">
-                      <h2>Happy Birthday</h2>
+                      <h2 style={{ color: "red" }}>Happy Birthday</h2>
                       <h1 id="name"></h1>
-                      <p id="message">Your card goes here...</p>
-                      <p id="from"></p>
+                      <p id="message" style={{ fontSize: "22px" }}>
+                        Let me be the first to remind you that you're getting
+                        older
+                      </p>
+                      <p id="from">
+                        <img style={{ height: "280px" }} src={minion}></img>
+                      </p>
                     </div>
                   </div>
                 </div>{" "}
