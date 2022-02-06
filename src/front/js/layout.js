@@ -6,6 +6,7 @@ import { Dashboard } from "./pages/dashboard";
 import { Add } from "./pages/add";
 import { Gift } from "./pages/giftcard";
 import { Register } from "./pages/register";
+import { Main } from "./pages/main";
 import { Payment } from "./pages/payment";
 import { Login } from "./pages/login";
 import injectContext from "./store/appContext";
@@ -23,6 +24,9 @@ const Layout = () => {
         <ScrollToTop>
           <Switch>
             <Route exact path="/">
+              <Main />
+            </Route>
+            <Route exact path="/register">
               <Register />
             </Route>
             <Route exact path="/login">

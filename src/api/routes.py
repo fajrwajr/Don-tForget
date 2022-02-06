@@ -15,7 +15,7 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from argon2 import PasswordHasher
 from sqlalchemy import table
-
+from sys import exit
 
 ph = PasswordHasher()
 
@@ -39,7 +39,7 @@ def birthday_alert():
             print(response.status_code)
             print(response.body)
             print(response.headers)
-        return ('success')
+            return ('success')    
         print(str(TNOW) +" Print 5 sec interval for 3 times")
 
     def SECONDS():
@@ -126,7 +126,7 @@ def add_dates():
         db.session.add(new_user)  # Adds new User record to database
         db.session.commit()  # Commits all changes
     return ("successfully created!")
-
+    
 @api.route('/login', methods=['POST'])
 def login():
     data = request.get_json()

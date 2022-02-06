@@ -74,9 +74,6 @@ export const Register = () => {
         <div className="alert alert-danger">Error at register</div>
       )}
       <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          First Name
-        </label>
         <input
           type="text"
           className="form-control"
