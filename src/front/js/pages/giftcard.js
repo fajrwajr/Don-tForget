@@ -3,48 +3,88 @@ import { Link } from "react-router-dom";
 import ballon from "../../img/cartoon.jpg";
 import gift from "../../img/gift.jpg";
 import minion from "../../img/minion.jpg";
+import "../../styles/dashboard.css";
+import { ListGroup } from "react-bootstrap";
 
 export const Gift = () => {
   const [email, setEmail] = React.useState("");
   const [radio, setRadio] = React.useState("");
   const [radioTwo, setRadioTwo] = React.useState("");
   const [radioThree, setRadioThree] = React.useState("");
-  let result =
-    "<div style='width: 85vw; margin-left: 20px; margin: 0 auto;'><div style='display: flex; justify-content: space-around;'><div style='flex: 2 1 0; height: 350px; margin: 20px auto; border: 1px solid #ccc; box-sizing: border-box;'><h1 style='color: pink'>Happy Birthday</h1><h1 style='text-align: center'></h1><h2 id='message'>May your birthday be sprinkled with fun and laughter</h2><p id='from'><img src='cartoon.jpg'></p> </div></div></div>";
+  let result = `<div style='width: 85vw; margin-left: 20px; margin: 0 auto;'><div style='display: flex; justify-content: space-around;'><div style='flex: 2 1 0; height: 350px; margin: 20px auto; border: 1px solid #ccc; box-sizing: border-box;'><h1 style='color: pink'>Happy Birthday</h1><h1 style='text-align: center'></h1><h2 id='message'>May your birthday be sprinkled with fun and laughter</h2><p id='from'><img src=${ballon}></p> </div></div></div>`;
   return (
     <>
-      <div className="sidebar-container">
-        <div className="sidebar-logo">Birthday</div>
-        <ul className="sidebar-navigation">
-          <li className="header">Navigation</li>
-          <li>
-            <Link to="/dashboard">
-              <i class="fa fa-circle" aria-hidden="true"></i> Dashboard
-            </Link>
-          </li>
-          <li class="header">Other</li>
-          <li>
-            <Link to="/Dates">
-              <i className="fa fa-calendar" aria-hidden="true"></i> View Dates
-            </Link>
-          </li>
-          <li>
-            <Link to="/Add">
-              <i class="fa fa-user" aria-hidden="true"></i>Add A Person
-            </Link>
-          </li>
-          <li>
-            <Link to="/giftacard">
-              <i className="fa fa-gift" aria-hidden="true"></i> Send A Card
-            </Link>
-          </li>
-          <li>
-            <Link to="/sendapayment">
-              <i className="fa fa-gift" aria-hidden="true"></i> Send A Payment
-            </Link>
-          </li>
-        </ul>
+      <div className="sidebar">
+        <div class="sidebar-brand">
+          <h2 style={{ fontSize: "150%" }}>
+            <i
+              style={{ marginRight: "1rem" }}
+              class="fa fa-birthday-cake"
+              aria-hidden="true"
+            ></i>
+            Never Forget
+          </h2>
+        </div>
+        <div class="sidebar-menu">
+          <ListGroup as="ul">
+            <li>
+              <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                <i
+                  style={{ marginRight: "6px" }}
+                  class="fa fa-object-group"
+                  aria-hidden="true"
+                ></i>
+                <span>Dashboard</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/Add" style={{ textDecoration: "none" }}>
+                <i
+                  style={{ marginRight: "6px" }}
+                  class="fa fa-users"
+                  aria-hidden="true"
+                ></i>
+                <span>Add A Birthday</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/Dates" style={{ textDecoration: "none" }}>
+                <i
+                  style={{ marginRight: "6px" }}
+                  class="fa fa-calendar"
+                  aria-hidden="true"
+                ></i>
+                <span>View Birthday</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                class="active"
+                to="/giftacard"
+                style={{ textDecoration: "none" }}
+              >
+                <i
+                  style={{ marginRight: "6px" }}
+                  class="fa fa-gift"
+                  aria-hidden="true"
+                ></i>
+                <span>Send A Card</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/sendapayment" style={{ textDecoration: "none" }}>
+                <i
+                  style={{ marginRight: "6px" }}
+                  class="fa fa-credit-card"
+                  aria-hidden="true"
+                ></i>
+                <span>Send A Payment</span>
+              </Link>
+            </li>
+          </ListGroup>
+        </div>
       </div>
+
       <div className="center">
         <h2>Choose A Gift Card To Send</h2>
         <div className="container">
