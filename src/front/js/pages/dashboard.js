@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import "../../styles/dashboard.css";
+import "../../styles/page.css";
 import { ListGroup } from "react-bootstrap";
 export const Dashboard = () => {
   const { store, actions } = useContext(Context);
@@ -81,11 +81,20 @@ export const Dashboard = () => {
           </ListGroup>
         </div>
       </div>
-      <div class="jumbotron">
-        <h1 class="display-4">Dashboard</h1>
-        <hr class="my-4"></hr>
-
-        <p class="lead">You haven't added any people yet</p>
+      <div id="error-page">
+        <div class="content">
+          <h2 class="header" data-text="Dashboard">
+            Dashboard
+          </h2>
+          <h4 data-text="Opps! Page not found">
+            You haven't added any users yet!
+          </h4>
+          <p>Head to the Add A Birthday Page to add a user.</p>
+          <div class="btns">
+            <Link to="/Add">Add A Birthday</Link>
+            <Link to="/Dates">View Birthday</Link>
+          </div>
+        </div>
       </div>
     </>
   );
