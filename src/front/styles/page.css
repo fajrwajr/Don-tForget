@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-body {
+.body {
   height: 100vh;
   background: -webkit-repeating-linear-gradient(
     -45deg,
@@ -37,7 +37,7 @@ body {
   text-align: center;
 }
 .content h2.header {
-  font-size: 6.4vw;
+  font-size: 6vw;
   line-height: 1em;
   position: relative;
 }
