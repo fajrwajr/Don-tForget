@@ -90,9 +90,9 @@ export const Gift = () => {
         <div className="container">
           <form role="form">
             <div className="row">
-              <div className="form-group">
+              <div className="form-grou">
                 <input
-                  style={{ marginLeft: "-25rem" }}
+                  style={{ marginLeft: "-3rem" }}
                   type="text"
                   name="name"
                   value={email}
@@ -104,7 +104,7 @@ export const Gift = () => {
                 <br></br>
                 <br></br>
                 <input
-                  style={{ marginLeft: "-29rem", marginBottom: "-84rem" }}
+                  style={{ marginLeft: "-10rem", marginBottom: "-84rem" }}
                   type="radio"
                   name="radio"
                   value={result}
@@ -112,7 +112,7 @@ export const Gift = () => {
                 />
                 <div
                   class="main"
-                  style={{ marginLeft: "-43rem", marginTop: "-3rem" }}
+                  style={{ marginLeft: "-23rem", marginTop: "-3rem" }}
                 >
                   <div class="container">
                     <div class="card">
@@ -122,14 +122,14 @@ export const Gift = () => {
                         May your birthday be sprinkled with fun and laughter
                       </p>
                       <p id="from">
-                        <img style={{ height: "300px" }} src={ballon}></img>
+                        <h1>Gift</h1>
                       </p>
                     </div>
                   </div>
                 </div>
                 <br></br>
                 <input
-                  style={{ marginLeft: "-29rem", marginBottom: "-84rem" }}
+                  style={{ marginLeft: "-10rem", marginBottom: "-84rem" }}
                   type="radio"
                   name="choice2"
                   value={radioTwo}
@@ -137,7 +137,7 @@ export const Gift = () => {
                 />
                 <div
                   class="main"
-                  style={{ marginLeft: "-43rem", marginTop: "-3rem" }}
+                  style={{ marginLeft: "-23rem", marginTop: "-3rem" }}
                 >
                   <div class="container">
                     <div class="card">
@@ -148,13 +148,13 @@ export const Gift = () => {
                         world
                       </p>
                       <p id="from">
-                        <img style={{ height: "280px" }} src={gift}></img>
+                        <h1>Gift</h1>
                       </p>
                     </div>
                   </div>
                 </div>{" "}
                 <input
-                  style={{ marginLeft: "-29rem", marginBottom: "-84rem" }}
+                  style={{ marginLeft: "-10rem", marginBottom: "-84rem" }}
                   type="radio"
                   name="choice3"
                   value={radioThree}
@@ -162,7 +162,7 @@ export const Gift = () => {
                 />
                 <div
                   class="main"
-                  style={{ marginLeft: "-43rem", marginTop: "-3rem" }}
+                  style={{ marginLeft: "-23rem", marginTop: "-3rem" }}
                 >
                   <div class="container">
                     <div class="card">
@@ -173,7 +173,7 @@ export const Gift = () => {
                         older
                       </p>
                       <p id="from">
-                        <img style={{ height: "280px" }} src={minion}></img>
+                        <h1>Gift</h1>
                       </p>
                     </div>
                   </div>

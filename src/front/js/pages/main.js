@@ -29,14 +29,14 @@ export const Main = () => {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <Link to="/register" class="nav-link">
                   SIGN UP
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <Link to="/login" class="nav-link">
                   LOG IN
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

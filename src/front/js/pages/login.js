@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "./register";
+import { Link } from "react-router-dom";
+import { Button, Row, Col } from "react-bootstrap";
+import "../../styles/login.css";
+
+import hero from "../../img/hero.png";
 
 export const Login = () => {
   const [email, setEmail] = React.useState("");
@@ -15,49 +20,49 @@ export const Login = () => {
   }, [login.token]);
 
   return (
-    <div className="container">
-      <form>
-        {login.error && (
-          <div className="alert alert-danger">Error at login</div>
-        )}
-        <div className="row">
-          <div className="form-group">
+    <div class="login-wrapper">
+      <div class="login-img">
+        <img src={hero} />
+      </div>
+      <div class="login-form">
+        <h2>Log In</h2>
+        <form>
+          {login.error && (
+            <div className="alert alert-danger">Error at login</div>
+          )}
+          <div class="form-group">
+            <label for="">Email</label>
             <input
-              style={{ marginLeft: "-20rem" }}
-              placeholder="Email Address"
               type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
+              placeholder="Enter Your Email"
             />
           </div>
-        </div>
-        <br></br>
-        <div className="row">
-          <div className="form-group">
+
+          <div class="form-group">
+            <label for="">Password</label>
             <input
-              style={{ marginLeft: "-20rem" }}
-              placeholder="Password"
               type="password"
-              className="form-control"
-              id="exampleInputPassword1"
               value={password}
               onChange={(ev) => setPassword(ev.target.value)}
+              placeholder="Enter Your Password"
             />
           </div>
-        </div>
-        <br></br>
-        <button
-          type="button"
-          className="btn btn-primary"
-          style={{ marginRight: "30px" }}
-          onClick={() => login.login(email, password)}
-        >
-          Login
-        </button>
-      </form>
+          <Row className="mx-0">
+            <Button
+              onClick={() => login.login(email, password)}
+              as={Col}
+              variant="primary"
+            >
+              Login
+            </Button>
+          </Row>
+          <div class="form-group button-holder">
+            <Link to="/register">Don't have an account? Sign Up</Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

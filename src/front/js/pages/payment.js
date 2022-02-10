@@ -126,7 +126,7 @@ export const Payment = () => {
             <div className="">
               <div className="form-group">
                 <input
-                  style={{ marginLeft: "35rem", width: "18rem" }}
+                  style={{ marginLeft: "8rem", width: "18rem" }}
                   type="text"
                   name="addr"
                   className="form-control input-normal"
@@ -136,7 +136,7 @@ export const Payment = () => {
               <br></br>
               <div className="form-group">
                 <input
-                  style={{ marginLeft: "35rem", width: "18rem" }}
+                  style={{ marginLeft: "8rem", width: "18rem" }}
                   name="ether"
                   type="text"
                   className="form-control input-normal"
@@ -148,7 +148,7 @@ export const Payment = () => {
           <footer className="p-4">
             <button
               type="submit"
-              style={{ width: "18rem", marginLeft: "35rem" }}
+              style={{ width: "18rem", marginLeft: "8rem" }}
               className="btn btn-primary submit-button"
             >
               Pay now

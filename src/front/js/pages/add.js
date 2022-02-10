@@ -86,7 +86,7 @@ export const Add = () => {
           <div className="row">
             <div className="form-group">
               <input
-                style={{ marginLeft: "-20rem" }}
+                style={{ marginLeft: "8rem" }}
                 type="text"
                 name="name"
                 value={name}
@@ -100,7 +100,7 @@ export const Add = () => {
           <div className="row">
             <div className="form-group">
               <input
-                style={{ marginLeft: "-20rem" }}
+                style={{ marginLeft: "8rem" }}
                 type="text"
                 name="date"
                 value={date}
@@ -111,7 +111,7 @@ export const Add = () => {
             </div>
             <button
               style={{
-                marginLeft: "-32rem",
+                marginLeft: "16rem",
                 marginTop: "4rem",
                 height: "2rem",
                 width: "6rem",

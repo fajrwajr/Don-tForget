@@ -100,27 +100,8 @@ export const Dates = () => {
                       <h2>{date.name}</h2>
                       <span>{date.date}</span>
                     </div>
-                    <div>
-                      <span className="las la-users"></span>
-                    </div>
-                  </div>
-                  <div className="card-single">
-                    <div>
-                      <h2>{date.name}</h2>
-                      <span>{date.date}</span>
-                    </div>
-                    <div>
-                      <span className="las la-users"></span>
-                    </div>
-                  </div>
-                  <div className="card-single">
-                    <div>
-                      <h2>{date.name}</h2>
-                      <span>{date.date}</span>
-                    </div>
-                    <div>
-                      <span className="las la-users"></span>
-                    </div>
+
+                    <div> </div>
                   </div>
                 </div>
               </main>

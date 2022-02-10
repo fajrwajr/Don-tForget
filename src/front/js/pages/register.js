@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import create from "zustand";
 import { persist } from "zustand/middleware";
+import { Link } from "react-router-dom";
+import { Button, Row, Col } from "react-bootstrap";
+import "../../styles/login.css";
 
+import hero from "../../img/hero.png";
 export const useAuth = create(
   persist(
     (set) => ({
@@ -69,77 +73,67 @@ export const Register = () => {
     }
   }, [register.success]);
   return (
-    <div className="container">
-      <form>
-        <div className="row">
+    <div className="login-wrapper">
+      <div class="login-img">
+        <img src={hero} />
+      </div>
+      <div class="login-form">
+        <h2>Sign Up</h2>
+        <form>
           {register.error && (
             <div className="alert alert-danger">Error at register</div>
           )}
           <div className="form-group">
+            <label for="">Name</label>
             <input
-              style={{ marginLeft: "-20rem" }}
               type="text"
-              placeholder="Name"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              placeholder="Enter Your Name"
               value={name}
               onChange={(ev) => setName(ev.target.value)}
             />
           </div>
-        </div>
-        <br></br>
-        <div className="row">
           <div className="form-group">
+            <label for="">Email</label>
             <input
-              style={{ marginLeft: "-20rem" }}
               type="email"
-              className="form-control"
-              aria-describedby="emailHelp"
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
-              placeholder="Email Address"
+              placeholder="Enter Your Email"
             />
           </div>
-        </div>
-        <br></br>
-        <div className="row">
           <div className="form-group">
+            <label for="">Phone Number</label>
             <input
-              style={{ marginLeft: "-20rem" }}
               type="phone"
-              className="form-control"
-              aria-describedby="emailHelp"
-              placeholder="Phone Number"
               value={phone}
               onChange={(ev) => setPhone(ev.target.value)}
+              placeholder="Enter Your Phone Number"
             />
           </div>
-        </div>
-        <br></br>
-        <div className="row">
           <div className="form-group">
+            <label for="">Confirm Password </label>
+
             <input
-              style={{ marginLeft: "-20rem" }}
               type="password"
-              className="form-control"
-              id="exampleInputPassword1"
               placeholder="Confirm Password"
               value={password}
               onChange={(ev) => setPassword(ev.target.value)}
             />
           </div>
-        </div>
-        <br></br>
-        <button
-          type="button"
-          style={{ marginRight: "10px" }}
-          className="btn btn-primary"
-          onClick={() => register.register(name, email, phone, password)}
-        >
-          Register
-        </button>
-      </form>
+          <Row className="mx-0">
+            <Button
+              onClick={() => register.register(name, email, phone, password)}
+              as={Col}
+              variant="primary"
+            >
+              Register
+            </Button>
+          </Row>
+          <div class="form-group button-holder">
+            <Link to="/login">Already have an account? Log In</Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
