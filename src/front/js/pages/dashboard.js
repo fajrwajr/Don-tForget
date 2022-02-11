@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import logo from "../../img/logo.png";
 import "../../styles/page.css";
 import { ListGroup } from "react-bootstrap";
 export const Dashboard = () => {
@@ -84,6 +85,7 @@ export const Dashboard = () => {
         </div>
         <div id="error-page">
           <div class="content">
+            <img src={logo} />
             <h2 class="header" data-text="Dashboard">
               Dashboard
             </h2>

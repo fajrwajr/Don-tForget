@@ -11,7 +11,16 @@ export const Gift = () => {
   const [radio, setRadio] = React.useState("");
   const [radioTwo, setRadioTwo] = React.useState("");
   const [radioThree, setRadioThree] = React.useState("");
-  let result = `<div style='width: 85vw; margin-left: 20px; margin: 0 auto;'><div style='display: flex; justify-content: space-around;'><div style='flex: 2 1 0; height: 350px; margin: 20px auto; border: 1px solid #ccc; box-sizing: border-box;'><h1 style='color: pink'>Happy Birthday</h1><h1 style='text-align: center'></h1><h2 id='message'>May your birthday be sprinkled with fun and laughter</h2><p id='from'><img src=${ballon}></p> </div></div></div>`;
+  let result = `<div style='width: 85vw; margin-left: 20px; margin: 0 auto;'><div style='display: flex; justify-content: space-around;'><div style='flex: 2 1 0; height: 350px; margin: 20px auto; border: 1px solid #ccc;   background: -webkit-repeating-linear-gradient(
+    -45deg,
+    #71b7e6,
+    #69a6ce,
+    #b98acc,
+    #ee8176,
+    #b98acc,
+    #69a6ce,
+    #9b59b6
+  ); box-sizing: border-box;'><h1 style='color: pink'>Happy Birthday</h1><h1 style='text-align: center'></h1><h2 id='message'>May your birthday be sprinkled with fun and laughter</h2><p id='from'></p> </div></div></div>`;
   return (
     <>
       <div className="sidebar">
@@ -92,7 +101,7 @@ export const Gift = () => {
             <div className="row">
               <div className="form-grou">
                 <input
-                  style={{ marginLeft: "-3rem" }}
+                  style={{ marginLeft: "-1rem" }}
                   type="text"
                   name="name"
                   value={email}
@@ -105,6 +114,7 @@ export const Gift = () => {
                 <br></br>
                 <input
                   style={{ marginLeft: "-10rem", marginBottom: "-84rem" }}
+                  id="one"
                   type="radio"
                   name="radio"
                   value={result}
@@ -116,13 +126,15 @@ export const Gift = () => {
                 >
                   <div class="container">
                     <div class="card">
-                      <h2 style={{ color: "pink" }}>Happy Birthday</h2>
+                      <h2 style={{ color: "pink", textAlign: "center" }}>
+                        Happy Birthday
+                      </h2>
                       <h1 id="name"></h1>
-                      <p id="message" style={{ fontSize: "22px" }}>
+                      <p
+                        id="message"
+                        style={{ color: "white", fontSize: "22px" }}
+                      >
                         May your birthday be sprinkled with fun and laughter
-                      </p>
-                      <p id="from">
-                        <h1>Gift</h1>
                       </p>
                     </div>
                   </div>
@@ -141,14 +153,16 @@ export const Gift = () => {
                 >
                   <div class="container">
                     <div class="card">
-                      <h2 style={{ color: "yellow" }}>Happy Birthday</h2>
+                      <h2 style={{ color: "yellow", textAlign: "center" }}>
+                        Happy Birthday
+                      </h2>
                       <h1 id="name"></h1>
-                      <p id="message" style={{ fontSize: "22px" }}>
+                      <p
+                        id="message"
+                        style={{ color: "white", fontSize: "22px" }}
+                      >
                         Today is your birthday, yet I have the best gift in the
                         world
-                      </p>
-                      <p id="from">
-                        <h1>Gift</h1>
                       </p>
                     </div>
                   </div>
@@ -166,14 +180,16 @@ export const Gift = () => {
                 >
                   <div class="container">
                     <div class="card">
-                      <h2 style={{ color: "red" }}>Happy Birthday</h2>
+                      <h2 style={{ color: "red", textAlign: "center" }}>
+                        Happy Birthday
+                      </h2>
                       <h1 id="name"></h1>
-                      <p id="message" style={{ fontSize: "22px" }}>
+                      <p
+                        id="message"
+                        style={{ color: "white", fontSize: "22px" }}
+                      >
                         Let me be the first to remind you that you're getting
                         older
-                      </p>
-                      <p id="from">
-                        <h1>Gift</h1>
                       </p>
                     </div>
                   </div>

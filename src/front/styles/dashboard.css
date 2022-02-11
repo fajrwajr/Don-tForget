@@ -149,3 +149,16 @@ main {
   height: 30rem;
   text-align: center;
 }
+
+.card {
+  background: -webkit-repeating-linear-gradient(
+    -45deg,
+    #71b7e6,
+    #69a6ce,
+    #b98acc,
+    #ee8176,
+    #b98acc,
+    #69a6ce,
+    #9b59b6
+  );
+}
