@@ -73,6 +73,16 @@ export const Add = () => {
                 <span>Send A Payment</span>
               </Link>
             </li>
+            <li>
+              <Link to="/flowers" style={{ textDecoration: "none" }}>
+                <i
+                  style={{ marginRight: "6px" }}
+                  class="fa fa-credit-card"
+                  aria-hidden="true"
+                ></i>
+                <span>Send Flowers</span>
+              </Link>
+            </li>
           </ListGroup>
         </div>
       </div>
