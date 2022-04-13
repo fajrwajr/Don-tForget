@@ -19,7 +19,7 @@ class User(db.Model):
             "name": self.name,
             "email": self.email,
             "phone": self.phone,
-            # do not serialize the password, its a security breach
+            # do not serialize the password, its aa security breach
         }
 
 class Dates(db.Model):
